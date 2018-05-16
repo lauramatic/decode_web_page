@@ -8,6 +8,7 @@ the_word = 'joan'
 r = requests.get(URL, allow_redirects=False)
 soup = BeautifulSoup(r.content, 'html.parser')
 
+#Find by a specific word
 words = soup.find(text=lambda text: text and the_word in text)
 print(words)
 
