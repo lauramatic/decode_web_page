@@ -1,11 +1,20 @@
+# import libraries
 import requests
 from bs4 import BeautifulSoup
-import sys
 
-base_url = 'http://www.getjoan.com'
-r = requests.get(base_url)
-print(r)
-if r.status_code != 200:
-    print("Url not available")
-    sys.exit()
-print(r.text)
+# insert the webpage you want to parse
+URL = 'https://www.getjoan.com'
+the_word = 'joan'
+r = requests.get(URL, allow_redirects=False)
+soup = BeautifulSoup(r.content, 'html.parser')
+
+words = soup.find(text=lambda text: text and the_word in text)
+print(words)
+
+
+
+
+
+
+
+
